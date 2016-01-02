@@ -49,7 +49,19 @@
 
       myWorker.onmessage = function(e) {
         toggleButtonsAbledness();
-        return ctx.putImageData(e.data, 0, 0);
+        var image = e.data
+        if (image) {
+          return ctx.putImageData(image, 0, 0);
+        };
+        console.log("No manipulated image returned from worker");
+      }
+
+      myWorker.onError = function(error) {
+        function WorkerException(message) {
+          this.name = "WorkerException";
+          this.message = message;
+        };
+        throw new WorkerException('Worker error.');
       }
     };
   };
