@@ -40,17 +40,14 @@
 
     toggleButtonsAbledness();
 
-    // Hint! This is where you should post messages to the web worker and
-    // receive messages from the web worker.
-
     if (window.Worker) {
-      var worker = new Worker("worker.js");
+      var myWorker = new Worker("worker.js");
 
       var data = { "imageData" : imageData, "type" : type }
-      worker.postMessage(data);
+      myWorker.postMessage(data);
       console.log('Message posted to worker');
 
-      worker.onmessage = function(e) {
+      myWorker.onmessage = function(e) {
         toggleButtonsAbledness();
         return ctx.putImageData(e, 0, 0);
       }
