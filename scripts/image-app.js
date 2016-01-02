@@ -49,7 +49,7 @@
 
       myWorker.onmessage = function(e) {
         toggleButtonsAbledness();
-        return ctx.putImageData(e, 0, 0);
+        return ctx.putImageData(e.data, 0, 0);
       }
     };
   };
