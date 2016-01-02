@@ -41,7 +41,7 @@
     toggleButtonsAbledness();
 
     if (window.Worker) {
-      var myWorker = new Worker("worker.js");
+      var myWorker = new Worker("scripts/worker.js");
 
       var data = { "imageData" : imageData, "type" : type }
       myWorker.postMessage(data);
